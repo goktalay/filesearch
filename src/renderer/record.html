@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: fsr:; media-src fsr:">
+  <title>File Search</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="mastertool.css">
+  <link rel="stylesheet" href="form.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="panes.css">
+</head>
+<body class="record-window">
+  <div class="app">
+    <header class="topbar compact">
+      <div class="brand rec-brand">
+        <div class="avatar" id="recAvatar"></div>
+        <div style="min-width:0">
+          <div class="brand-name" id="recName"></div>
+          <div class="brand-sub mono" id="recPath"></div>
+        </div>
+      </div>
+      <div class="search">
+        <span class="search-ico"></span>
+        <input id="search" spellcheck="false" autocomplete="off">
+        <button class="icon-btn search-clear hidden" id="searchClear"></button>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" id="btnRescan"></button>
+        <button class="btn ghost" id="btnFolder"></button>
+        <button class="btn ghost" id="btnEdit"></button>
+        <button class="btn ghost" id="btnTheme"></button>
+      </div>
+    </header>
+
+    <main class="rec-main">
+      <aside class="tree-pane" id="tree"></aside>
+      <div class="splitter" id="splitTree"></div>
+      <section class="list-pane">
+        <nav class="crumbs slim" id="crumbs"></nav>
+        <div class="flist" id="list"></div>
+      </section>
+      <div class="splitter" id="splitPreview"></div>
+      <aside class="preview-pane" id="preview"></aside>
+    </main>
+
+    <footer class="statusbar" id="status"></footer>
+  </div>
+
+  <script src="../i18n.js"></script>
+  <script src="../formats.js"></script>
+  <script src="ui.js"></script>
+  <script src="settings.js"></script>
+  <script src="mastertool.js"></script>
+  <script src="recordform.js"></script>
+  <script src="preview.js"></script>
+  <script src="record.js"></script>
+</body>
+</html>

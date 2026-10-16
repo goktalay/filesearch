@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: fsr:; media-src fsr:">
+  <title>File Search</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="mastertool.css">
+  <link rel="stylesheet" href="form.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="panes.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <img src="../../build/icon.png" alt="">
+        <div>
+          <div class="brand-name">File Search</div>
+          <div class="brand-sub" id="stats"></div>
+        </div>
+      </div>
+      <div class="search big">
+        <span class="search-ico"></span>
+        <input id="search" spellcheck="false" autocomplete="off">
+        <button class="icon-btn search-clear hidden" id="searchClear"></button>
+        <button class="icon-btn search-opts" id="searchOpts"></button>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" id="btnTheme"></button>
+        <button class="btn ghost" id="btnSettings"></button>
+        <button class="btn primary" id="btnNew"></button>
+        <button class="account-chip" id="btnAccount"><span class="ac-avatar"></span><span class="ac-sync"></span></button>
+      </div>
+    </header>
+
+    <div class="update-bar hidden" id="updateBar"></div>
+
+    <!-- Kayıtlar -->
+    <main class="content" id="home">
+      <div class="home-bar" id="homeBar"></div>
+      <div class="grid" id="grid"></div>
+    </main>
+
+    <!-- Arama -->
+    <main class="search-view hidden" id="searchView">
+      <aside class="filters" id="filters"></aside>
+      <section class="results-pane">
+        <div class="results-head">
+          <div class="tabs slim" id="searchTabs">
+            <button type="button" data-tab="results"></button>
+            <button type="button" data-tab="cloud"></button>
+          </div>
+          <span class="spacer"></span>
+          <select class="input sm" id="sort"></select>
+        </div>
+        <div class="did-you-mean hidden" id="fuzzyNote"></div>
+        <div class="results" id="results"></div>
+        <div class="cloud3d-wrap hidden" id="cloudWrap">
+          <div class="cloud3d-bar" id="cloudBar"></div>
+          <div class="cloud3d" id="cloud3d"></div>
+          <div class="cloud3d-tip hidden" id="cloudTip"></div>
+          <div class="cloud3d-help" id="cloudHelp"></div>
+        </div>
+      </section>
+      <div class="splitter" id="split"></div>
+      <aside class="preview-pane" id="preview"></aside>
+    </main>
+  </div>
+
+  <script src="../i18n.js"></script>
+  <script src="../formats.js"></script>
+  <script src="ui.js"></script>
+  <script src="settings.js"></script>
+  <script src="mastertool.js"></script>
+  <script src="recordform.js"></script>
+  <script src="preview.js"></script>
+  <script type="module" src="cloud3d.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
