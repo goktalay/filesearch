@@ -22,7 +22,7 @@ async function editRecord(rec, { path: presetPath } = {}) {
       <small class="set-hint">${esc(t('rf.folderHint'))}</small></div>
     <div class="field"><label>${esc(t('rf.name'))}</label><input class="input" id="rf-name" value="${esc(r.name || '')}" placeholder="${esc(t('rf.namePh'))}"></div>
     <div class="field"><label>${esc(t('rf.color'))}</label><div class="swatches" id="rf-colors"></div></div>
-    <div class="row c-3-1">
+    <div class="row" style="grid-template-columns: 2fr 1fr">
       <div class="field"><label>${esc(t('rf.excludes'))}</label>
         <textarea class="input" id="rf-ex" rows="4" spellcheck="false">${esc((r.excludes || []).join('\n'))}</textarea>
         <small class="set-hint">${esc(t('rf.excludesHint'))}</small></div>

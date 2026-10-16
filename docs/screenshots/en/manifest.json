@@ -1,0 +1,68 @@
+[
+  {
+    "file": "01-kayitlar-gece.png",
+    "theme": "dark",
+    "title": "Records",
+    "caption": "Each record shows its live total size, file and folder count and watch state"
+  },
+  {
+    "file": "02-kayitlar-gunduz.png",
+    "theme": "light",
+    "title": "Records",
+    "caption": "Each record shows its live total size, file and folder count and watch state"
+  },
+  {
+    "file": "03-yeni-kayit-gece.png",
+    "theme": "dark",
+    "title": "New record",
+    "caption": "Pick the folder first; then name, colour, exclude patterns and size limit"
+  },
+  {
+    "file": "04-arama-gece.png",
+    "theme": "dark",
+    "title": "Smart search",
+    "caption": "Stems, accents and typos handled; highlighted snippets, filters, preview"
+  },
+  {
+    "file": "05-yazim-hatasi-gunduz.png",
+    "theme": "light",
+    "title": "Typo correction",
+    "caption": "“propsal budget” → proposal, budget; type filter and document word cloud"
+  },
+  {
+    "file": "06-kelime-bulutu-3b-gece.png",
+    "theme": "dark",
+    "title": "3D word cloud",
+    "caption": "Every word in the index in 3D; rotate, zoom and click a word to search"
+  },
+  {
+    "file": "07-kelime-bulutu-3b-gunduz.png",
+    "theme": "light",
+    "title": "3D word cloud",
+    "caption": "Every word in the index in 3D; rotate, zoom and click a word to search"
+  },
+  {
+    "file": "08-kayit-penceresi-gece.png",
+    "theme": "dark",
+    "title": "Record window",
+    "caption": "Folder tree with sizes, file list, preview and a live status bar"
+  },
+  {
+    "file": "09-kayit-icinde-arama-gunduz.png",
+    "theme": "light",
+    "title": "Search within a record",
+    "caption": "Search only this record; results with subfolder path and highlights"
+  },
+  {
+    "file": "10-arama-ayarlari-gece.png",
+    "theme": "dark",
+    "title": "Settings › Search",
+    "caption": "OCR and speech to text are optional and off by default; limits"
+  },
+  {
+    "file": "11-ocr-gunduz.png",
+    "theme": "light",
+    "title": "Text in images (OCR)",
+    "caption": "Text in a photo is read on this computer and becomes searchable"
+  }
+]

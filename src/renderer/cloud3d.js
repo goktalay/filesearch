@@ -6,7 +6,7 @@ import * as THREE from '../../node_modules/three/build/three.module.js';
 
 const PALETTE_DARK = ['#22d3ee', '#818cf8', '#a78bfa', '#f472b6', '#34d399', '#fbbf24', '#fb923c', '#60a5fa', '#2dd4bf', '#e879f9'];
 const PALETTE_LIGHT = ['#0891b2', '#4f46e5', '#7c3aed', '#db2777', '#059669', '#b45309', '#c2410c', '#2563eb', '#0d9488', '#a21caf'];
-const RADIUS = 10;
+const RADIUS = 11;
 
 const isLight = () => matchMedia('(prefers-color-scheme: light)').matches;
 const hash = (s) => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) | 0, 7);
@@ -43,7 +43,7 @@ function mount(host, words, { onPick, onHover } = {}) {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 200);
-  const DEFAULT_Z = 27;
+  const DEFAULT_Z = 30;
   camera.position.set(0, 0, DEFAULT_Z);
   const group = new THREE.Group();
   scene.add(group);
@@ -102,7 +102,7 @@ function mount(host, words, { onPick, onHover } = {}) {
       const th = golden * i;
       const rad = RADIUS * (0.92 + r01 * 0.12);
       sp.position.set(Math.cos(th) * rr * rad, y * rad, Math.sin(th) * rr * rad);
-      const hgt = 0.55 + r01 * 1.75;
+      const hgt = 0.5 + r01 * 1.3;
       sp.scale.set(hgt * aspect, hgt, 1);
       sp.userData = { word: w, base: sp.scale.clone(), r01 };
       group.add(sp);

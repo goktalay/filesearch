@@ -54,6 +54,7 @@ contextBridge.exposeInMainWorld('api', {
   // arama, ağaç, belge, kelime bulutu
   search: (opts) => ipcRenderer.invoke('ix:search', opts),
   cloud: (opts) => ipcRenderer.invoke('ix:cloud', opts),
+  recent: (opts) => ipcRenderer.invoke('ix:recent', opts),
   children: (record, rel, dirsOnly) => ipcRenderer.invoke('ix:children', { record, rel, dirsOnly }),
   rootInfo: (record) => ipcRenderer.invoke('ix:root', record),
   doc: (id) => ipcRenderer.invoke('ix:doc', id),

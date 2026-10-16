@@ -217,6 +217,20 @@ body {
 .rec-card .new-card { height: 176px; }
 .grid > .new-card { height: 176px; }
 
+/* Son değişiklikler */
+.recent { margin-top: 28px; }
+.recent .section-title { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; }
+.recent .section-title svg.i { width: 14px; height: 14px; }
+.recent-list { border: 1px solid var(--border); border-radius: 14px; background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%); overflow: hidden; }
+.recent-row { display: grid; grid-template-columns: 30px minmax(0, 1.2fr) minmax(0, 1.4fr) 150px 80px; align-items: center; gap: 12px; padding: 7px 14px; cursor: pointer; border-bottom: 1px solid var(--border); }
+.recent-row:last-child { border-bottom: none; }
+.recent-row:hover { background: var(--surface-2); }
+.r-ico.sm { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: color-mix(in srgb, var(--c) 16%, transparent); color: var(--c); }
+.r-ico.sm svg.i { width: 15px; height: 15px; }
+.rr-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rr-where { display: flex; align-items: center; gap: 6px; color: var(--text-3); font-size: 12px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.rr-date, .rr-size { color: var(--text-2); font-size: 12px; text-align: end; font-variant-numeric: tabular-nums; }
+
 /* Kayıt formu */
 .swatches { display: flex; flex-wrap: wrap; gap: 8px; }
 .swatch { width: 26px; height: 26px; border-radius: 8px; border: 2px solid transparent; background: var(--c); cursor: pointer; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }

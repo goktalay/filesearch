@@ -48,7 +48,7 @@ document.addEventListener('keydown', (e) => {
 
 window.api.onStoreChanged((d) => { data = d; render(); paintThemeBtn(); renderFilters(); });
 window.api.onRecordStats((s) => { stats = s; renderGrid(); renderStats(); });
-window.api.onIndexChanged(() => { if (search.active) scheduleSearch(1500); });
+window.api.onIndexChanged(() => { if (search.active) scheduleSearch(1500); else loadRecentSoon(); });
 
 // --- Hesap rozeti ve senkron durumu ---------------------------------------------
 let lastErrorShown = null;
@@ -108,6 +108,41 @@ function render() {
   renderHomeBar();
   renderGrid();
   renderStats();
+  loadRecentSoon();
+}
+
+// --- Son değişiklikler (izlenen klasörlerde en son değişen dosyalar) ---------------------------
+let recentTimer = null;
+function loadRecentSoon() {
+  if (recentTimer) return;
+  recentTimer = setTimeout(async () => {
+    recentTimer = null;
+    const rows = data.records.length ? await window.api.recent({ limit: 12 }).catch(() => []) : [];
+    renderRecent(rows);
+  }, 300);
+}
+
+function renderRecent(rows) {
+  const el = $('#recent');
+  el.classList.toggle('hidden', !rows.length);
+  if (!rows.length) { el.innerHTML = ''; return; }
+  el.innerHTML = `<div class="section-title">${icon('history')}${esc(t('app.recent'))}<span class="hint">${esc(t('app.recentHint'))}</span></div>`;
+  const list = h('<div class="recent-list"></div>');
+  for (const r of rows) {
+    const rec = data.records.find((x) => x.id === r.record);
+    const dir = r.rel.includes('/') ? r.rel.slice(0, r.rel.lastIndexOf('/')).replace(/\//g, ' › ') : '';
+    const row = h(`<div class="recent-row" style="--c:${kindColor(r.kind)}">
+      <span class="r-ico sm">${icon(kindIcon(r.kind))}</span>
+      <span class="rr-name">${esc(r.name)}</span>
+      <span class="rr-where"><i class="dot" style="background:${rec ? rec.color : '#888'}"></i>${esc(r.recordName)}${dir ? ` › ${esc(dir)}` : ''}</span>
+      <span class="rr-date">${esc(formatDate(r.mtime))}</span>
+      <span class="rr-size">${formatSize(r.size)}</span>
+    </div>`);
+    row.onclick = () => window.api.openRecord(r.record, { rel: r.rel.includes('/') ? r.rel.slice(0, r.rel.lastIndexOf('/')) : '', docId: r.id });
+    row.title = t('pv.showInRecord');
+    list.appendChild(row);
+  }
+  el.appendChild(list);
 }
 
 function totals() {
@@ -329,12 +364,16 @@ function paintTabs() {
       $('#results').classList.toggle('hidden', search.tab !== 'results');
       $('#cloudWrap').classList.toggle('hidden', search.tab !== 'cloud');
       $('#sort').classList.toggle('hidden', search.tab !== 'results');
+      $('#preview').classList.toggle('hidden', search.tab === 'cloud');
+      $('#split').classList.toggle('hidden', search.tab === 'cloud');
       if (search.tab === 'cloud') showCloud(); else { disposeCloud(); if (!search.q.trim()) showSearchView(false); }
     };
   });
   $('#results').classList.toggle('hidden', search.tab !== 'results');
   $('#cloudWrap').classList.toggle('hidden', search.tab !== 'cloud');
   $('#sort').classList.toggle('hidden', search.tab !== 'results');
+  $('#preview').classList.toggle('hidden', search.tab === 'cloud');
+  $('#split').classList.toggle('hidden', search.tab === 'cloud');
 }
 
 // Sıralama
@@ -531,7 +570,7 @@ function cloudBar() {
       <button type="button" data-v="all">${esc(search.filters.records.length ? t('cl.scopeRecord') : t('cl.scopeAll'))}</button>
     </div>
     <span class="spacer"></span>
-    <label class="cb-count">${esc(t('cl.count'))} <select class="input sm" id="cloudCount">${options([[80, '80'], [150, '150'], [250, '250']], search.cloudCount || 150)}</select></label>
+    <label class="cb-count">${esc(t('cl.count'))} <select class="input sm" id="cloudCount">${options([[60, '60'], [120, '120'], [200, '200']], search.cloudCount || 120)}</select></label>
     <button class="btn sm ghost" id="cloudReset">${icon('crosshair')}${esc(t('cl.reset'))}</button>`;
   el.querySelectorAll('#cloudScope button').forEach((b) => {
     b.classList.toggle('on', b.dataset.v === search.cloudScope);
@@ -550,7 +589,7 @@ function showCloud() {
 async function loadCloud() {
   if (search.tab !== 'cloud' || !search.active) return;
   cloudBar();
-  const opts = { limit: search.cloudCount || 150 };
+  const opts = { limit: search.cloudCount || 120 };
   if (search.cloudScope === 'results' && search.q.trim()) {
     const r = await window.api.search({ ...searchOpts(), limit: 500, offset: 0 }).catch(() => ({ results: [] }));
     opts.ids = r.results.map((x) => x.id);

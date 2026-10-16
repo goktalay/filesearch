@@ -49,7 +49,22 @@
     "files": [
       "src/**/*",
       "build/icon.png",
-      "package.json"
+      "package.json",
+      "!node_modules/three/examples/**",
+      "!node_modules/three/src/**",
+      "!node_modules/three/build/*.min.js",
+      "!node_modules/three/build/three.webgpu*",
+      "!node_modules/three/build/three.tsl*",
+      "!node_modules/three/build/three.cjs",
+      "!node_modules/pdfjs-dist/build/**",
+      "!node_modules/pdfjs-dist/web/**",
+      "!node_modules/pdfjs-dist/image_decoders/**",
+      "!node_modules/pdfjs-dist/types/**",
+      "!node_modules/pdfjs-dist/legacy/web/**",
+      "!node_modules/pdfjs-dist/legacy/image_decoders/**",
+      "!**/*.map",
+      "!**/*.d.ts",
+      "!**/*.d.mts"
     ],
     "npmRebuild": true,
     "asarUnpack": [

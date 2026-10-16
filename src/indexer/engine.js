@@ -745,6 +745,15 @@ class Indexer extends EventEmitter {
     };
   }
 
+  // Son değişen dosyalar (ana ekran): tüm kayıtlarda değiştirilme tarihine göre
+  recent({ limit = 12 } = {}) {
+    const recs = [...this.records.keys()];
+    if (!recs.length) return [];
+    const rows = this.db.prepare(`SELECT id, record, rel, name, size, mtime, kind, ext, state, source FROM nodes
+      WHERE record IN (${recs.map(() => '?').join(',')}) AND is_dir = 0 ORDER BY mtime DESC LIMIT ?`).all(...recs, Math.min(100, Number(limit) || 12));
+    return rows.map((r) => ({ ...r, recordName: (this.records.get(r.record) || {}).name || '' }));
+  }
+
   // Göreli yoldan düğüm (kayıt penceresinde)
   nodeAt(recordId, rel) {
     const n = this.db.prepare('SELECT id FROM nodes WHERE record = ? AND rel = ?').get(recordId, rel);

@@ -756,6 +756,7 @@ const wrap = (fn) => async (event, arg) => {
 
 ipcMain.handle('ix:search', wrap((_e, opts) => ix('search', opts)));
 ipcMain.handle('ix:cloud', wrap((_e, opts) => ix('cloud', opts)));
+ipcMain.handle('ix:recent', wrap((_e, opts) => ix('recent', opts)));
 ipcMain.handle('ix:children', wrap((_e, a) => ix('children', a)));
 ipcMain.handle('ix:root', wrap((_e, id) => ix('rootInfo', id)));
 ipcMain.handle('ix:doc', wrap(async (_e, id) => withMedia(await ix('doc', id))));

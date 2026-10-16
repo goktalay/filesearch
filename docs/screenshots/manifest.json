@@ -1,0 +1,68 @@
+[
+  {
+    "file": "01-kayitlar-gece.png",
+    "theme": "dark",
+    "title": "Kayıtlar",
+    "caption": "Her kayıtta canlı toplam boyut, dosya ve klasör sayısı, izleme durumu"
+  },
+  {
+    "file": "02-kayitlar-gunduz.png",
+    "theme": "light",
+    "title": "Kayıtlar",
+    "caption": "Her kayıtta canlı toplam boyut, dosya ve klasör sayısı, izleme durumu"
+  },
+  {
+    "file": "03-yeni-kayit-gece.png",
+    "theme": "dark",
+    "title": "Yeni kayıt",
+    "caption": "Önce klasör sorulur; ad, renk, hariç tutma kalıpları ve boyut sınırı"
+  },
+  {
+    "file": "04-arama-gece.png",
+    "theme": "dark",
+    "title": "Akıllı arama",
+    "caption": "Kök, aksan ve yazım hatasına dayanıklı; vurgulu parça, filtreler, önizleme"
+  },
+  {
+    "file": "05-yazim-hatasi-gunduz.png",
+    "theme": "light",
+    "title": "Yazım hatası düzeltme",
+    "caption": "“teklf bütçe” → teklif, bütçe; tür filtresi ve belge kelime bulutu"
+  },
+  {
+    "file": "06-kelime-bulutu-3b-gece.png",
+    "theme": "dark",
+    "title": "3B kelime bulutu",
+    "caption": "Tüm dizinin kelimeleri üç boyutta; döndür, yakınlaştır, kelimeye tıkla ara"
+  },
+  {
+    "file": "07-kelime-bulutu-3b-gunduz.png",
+    "theme": "light",
+    "title": "3B kelime bulutu",
+    "caption": "Tüm dizinin kelimeleri üç boyutta; döndür, yakınlaştır, kelimeye tıkla ara"
+  },
+  {
+    "file": "08-kayit-penceresi-gece.png",
+    "theme": "dark",
+    "title": "Kayıt penceresi",
+    "caption": "Klasör ağacı boyutlarıyla, dosya listesi, önizleme ve canlı durum çubuğu"
+  },
+  {
+    "file": "09-kayit-icinde-arama-gunduz.png",
+    "theme": "light",
+    "title": "Kayıt içinde arama",
+    "caption": "Yalnız bu kayıtta ara; sonuçlar alt klasör yoluyla ve vurgulu"
+  },
+  {
+    "file": "10-arama-ayarlari-gece.png",
+    "theme": "dark",
+    "title": "Ayarlar › Arama",
+    "caption": "OCR ve konuşmadan metne isteğe bağlı, varsayılan kapalı; sınırlar"
+  },
+  {
+    "file": "11-ocr-gunduz.png",
+    "theme": "light",
+    "title": "Resimde metin (OCR)",
+    "caption": "Fotoğraftaki yazı bu bilgisayarda okunur ve aranır"
+  }
+]

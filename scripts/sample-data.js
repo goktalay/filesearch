@@ -90,7 +90,7 @@ function bulk(set, lang) {
   for (const year of [2023, 2024, 2025]) {
     for (let m = 1; m <= 12; m++) {
       const name = `${lang === 'tr' ? 'Eski projeler' : 'Old projects'}/${year}/${String(m).padStart(2, '0')}/${lang === 'tr' ? 'aylık-rapor' : 'monthly-report'}.txt`;
-      const body = lorem(words.map((w, i) => `${w} ${words[(i * 7 + m) % words.length]} ${words[(i * 3 + year) % words.length]}`), 40 + m * 3);
+      const body = lorem(words.map((w, i) => `${w} ${words[(i * 7 + m) % words.length]} ${words[(i * 3 + year) % words.length]}`), 4 + (m % 5));
       set[base][name] = `${lang === 'tr' ? 'Aylık rapor' : 'Monthly report'} ${year}-${m}\n\n${body}\n`;
     }
   }
@@ -123,11 +123,34 @@ async function images(root, lang) {
   }
 }
 
+// Değiştirilme tarihleri: hepsi "şimdi" olmasın (adındaki yıl/ay varsa ona, yoksa son aylara; deterministik)
+function stampDates(root) {
+  const walk = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) { walk(p); continue; }
+      const rel = path.relative(root, p).split(path.sep).join('/');
+      let d;
+      const ym = /(20\d\d)\/(\d\d)\//.exec(rel);
+      const ymd = /(20\d\d)-(\d\d)-(\d\d)/.exec(rel);
+      if (ym) d = new Date(Number(ym[1]), Number(ym[2]) - 1, 28, 17, 30);
+      else if (ymd) d = new Date(Number(ymd[1]), Number(ymd[2]) - 1, Number(ymd[3]), 18, 5);
+      else {
+        const h = [...rel].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+        d = new Date(Date.UTC(2026, 9, 15) - (h % 120) * 86400000 - (h % 600) * 60000);
+      }
+      fs.utimesSync(p, d, d);
+    }
+  };
+  walk(root);
+}
+
 async function generate(root, lang = 'tr') {
   const data = lang === 'tr' ? TR : EN;
   bulk(data, lang);
   write(root, data);
   await images(root, lang);
+  stampDates(root);
   return Object.keys(data).map((d) => path.join(root, d));
 }
 

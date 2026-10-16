@@ -40,6 +40,7 @@ const METHODS = {
   doc: (id) => ix.doc(id),
   nodeAt: ({ record, rel }) => ix.nodeAt(record, rel),
   cloud: (opts) => ix.cloud(opts),
+  recent: (opts) => ix.recent(opts),
   rescan: (record) => ix.rescan(record),
   retryErrors: (record) => ix.retryErrors(record),
   storage: () => ix.storage(),
