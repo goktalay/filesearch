@@ -1,6 +1,6 @@
 # File Search — teknik bilgi föyü
 
-Bu föydeki her bilgi uygulamanın kaynak kodundan doğrulanmıştır (sürüm 1.0.0, `claude/file-search-init` dalı). Henüz Windows derlemesi alınmadığı için kurulum dosyası boyutları ilk derlemeden sonra eklenecektir.
+Bu föydeki her bilgi uygulamanın kaynak kodundan doğrulanmıştır (sürüm 1.0.0). Kurulum dosyası boyutları ilk Windows derlemesinden sonra eklenecektir.
 
 ## Sistem gereksinimleri
 
@@ -141,7 +141,7 @@ Dosyalarınız hiçbir zaman değiştirilmez. Ayarlar › Depolama: dizin boyutu
 
 ## Sürüm geçmişi
 
-### 1.0.0 — yayınlanmadı
+### 1.0.0 — 16 Ekim 2026
 
 - İlk sürüm: kayıtlar ve canlı boyut/sayılar, kayıt penceresi (ağaç, liste, önizleme), arka planda izleme ve fark taraması, ayrı dizinleyici süreci.
 - Metin çıkarma: metin/kod, PDF, Word, Excel, PowerPoint, OpenDocument, RTF, HTML, e-posta.
